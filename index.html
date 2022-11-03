@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz answers</title>
+</head>
+
+<body>
+    <div class="quiz">
+        <div id="title" class="quiz__title">Название опроса</div>
+        <div class="quiz__progress-wrap">
+            <div class="quiz__progress">
+                <div id="progress-fill" class="quiz__progress-fill"></div>
+            </div>
+            <div class="quiz__progress-questions">
+                <strong id="question-number">0</strong>/<span id="total-questions"></span>
+            </div>
+        </div>
+        <div id="question-wrap" class="quiz__question">
+            <strong id="question-position">1</strong>
+            <span id="question">В чем разница между null и undefined?</span>
+        </div>
+        <div id="answers" class="quiz__answers">
+            <div data-id='0' class="quiz__answer">undefined это неожиданное отсутствие значения, а null — умышленное отсутствие значения</div>
+            <div data-id='1' class="quiz__answer">null это пустое множество, undefined - неизвестное значение равное первому</div>
+            <div data-id='2' class="quiz__answer">оба понятия абсолютно идентичны друг другу</div>
+            <div data-id='3' class="quiz__answer">разница зависит от способа и метода применения в коде</div>
+        </div>
+        <div class="sentense">
+            <p id="message"></p>
+        </div>
+        <div id="next" class="quiz__btn quiz__btn-disable">Следующий вопрос</div>
+        <div id="result" class="quiz__result">
+            <picture>
+                <img src="/win.gif" alt="gongratalations">
+            </picture>
+            <div class="quiz__result-info">
+                <span>Верных ответов <br></span>
+                <span id="valid-answers" class="quiz__result-num"></span>
+                <span>из</span>
+                <span id="result__total-questions"></span>
+            </div>
+            <div class="quiz__result-title"></div>
+        </div>
+    </div>
+    <script src="data.js">
+    </script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>
