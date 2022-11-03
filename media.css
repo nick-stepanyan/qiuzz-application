@@ -21,11 +21,27 @@
     .quiz__progress-wrap {
         margin-bottom: 30px;
     }
+    .quiz__result-info {
+        font-size: 20px;
+    }
+    #valid-answers,
+    #result__total-questions {
+        font-size: 35px;
+    }
+    #pica {
+        opacity: 0.3;
+    }
+    .quiz__result {
+        margin-top: -150px;
+    }
 }
 
 @media screen and (max-width: 520px) {
     .quiz {
         width: 400px;
+    }
+    .quiz__result {
+        margin-top: -160px;
     }
     .quiz__progress-wrap {
         margin-bottom: 20px;
@@ -55,6 +71,9 @@
     .quiz__progress-wrap {
         margin-bottom: 18px;
     }
+    .quiz__result {
+        margin-top: -180px;
+    }
     .quiz__title {
         font-size: 17px;
         margin-bottom: 10px;
@@ -69,5 +88,12 @@
         font-size: 14px;
         margin: 15px auto 0;
         padding: 6px 10px;
+    }
+    .quiz__result-info {
+        font-size: 15px;
+    }
+    #valid-answers,
+    #result__total-questions {
+        font-size: 25px;
     }
 }
