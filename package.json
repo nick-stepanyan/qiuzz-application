@@ -9,6 +9,7 @@
   "author": "Nickolay Stepanyan",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.26.0"
+    "eslint": "^8.26.0",
+    "eslint-plugin-babel": "^5.3.1"
   }
 }
