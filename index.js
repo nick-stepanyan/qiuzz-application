@@ -1,6 +1,7 @@
 const dom = {
     title: document.getElementById('title'),
     totalQuestions: document.getElementById('total-questions'),
+    question: document.getElementById('question'),
     sentense: document.getElementById('message'),
     progress: {
         progressFill: document.getElementById('progress-fill'),
@@ -20,14 +21,25 @@ const dom = {
         questionsCount: document.getElementById('result__total-questions'),
     }
 }
+
+let step = 0;
+
+const firstBlockAnswers = (step) => {
+    dom.question.textContent = data.questions[step].question;
+    const answers = data.questions[step].answers;
+    return dom.answers.innerHTML = buildAnswers(answers);
+};
+firstBlockAnswers(step);
+
+
+
 dom.title.textContent = data.title;
 dom.totalQuestions.textContent = data.questions.length;
 
-
-
-let totalSteps = data.questions.length;
-let step = 0;
 let validAnswersCount = 0;
+let totalSteps = data.questions.length;
+
+
 
 //Клик по кнопке - следующий вопрос.
 dom.next.onclick = () => {
@@ -51,8 +63,6 @@ function renderQuiz(total, step) {
     } else if (step === total) {
         renderResults();
     }
-
-
 };
 
 
@@ -68,7 +78,7 @@ function renderProgress(total, step) {
 
 //Отрисовка вопроса
 function renderQuestion(step) {
-    dom.step.questionPosition.innerHTML = `${step + 1})`
+    dom.step.questionPosition.innerHTML = `${step + 1}`
     dom.step.question.innerHTML = data.questions[step].question;
 };
 
@@ -79,12 +89,15 @@ function renderQuestion(step) {
 function buildAnswers(answers) {
     const answersHtml = [];
     answers.forEach((answer, idx) => {
-        const html = `<div class="quiz__answer" data-id="${idx}">${answer}</div>`
+        const html = `<div class="quiz__answer" data-id="${idx}">${answer}</div>`;
+
         answersHtml.push(html);
     });
-
+    answersHtml.sort(() => Math.random() - 0.5);
     return answersHtml.join('');
 }
+
+
 
 // Отрисовка ответов
 
@@ -111,7 +124,6 @@ dom.answers.onclick = (event) => {
 
 function checkAnswer(step, answer) {
     const validAnswerId = data.questions[step].validAnswer;
-    console.log(answer, validAnswerId)
     return validAnswerId === ++answer;
 };
 
@@ -120,7 +132,6 @@ function checkAnswer(step, answer) {
 // Block answers
 function isDisableAnswers(isDisable) {
     if (isDisable) {
-        console.log(23);
         dom.answers.classList.add('quiz__answers-disable');
     }
 };
@@ -128,7 +139,6 @@ function isDisableAnswers(isDisable) {
 
 // Block button
 function isDisableButton(isDisable) {
-    console.log(isDisable)
     if (isDisable) {
         dom.next.classList.add('quiz__btn-disable');
     } else {
@@ -151,7 +161,7 @@ function renderResults() {
     dom.result.validAnswers.innerHTML = validAnswersCount;
     dom.result.questionsCount.innerHTML = totalSteps;
     const validAnswersCountPercent = (validAnswersCount / totalSteps) * 100;
-    console.log(typeof validAnswersCountPercent)
+
     if (validAnswersCountPercent === 0) {
         dom.sentense.textContent = 'Очень плохой результат. Мало того, что ты ничего не смыслишь в этой теме, так ты ещё и неудачник, из вопросов не угадать ни одного это надо быть крупным придурком и неудачником одновременно! Жесть... ну ты тупень, лучше открой окно и сделай шаг на встречу другой жизни! Шучу-шучу, это же юмор, понимать надо. Есть разные профессии в жизни, например, подниматель пингвинов! Подумай об этом))) ';
     } else if (validAnswersCountPercent < 50) {
