@@ -23,8 +23,10 @@ const dom = {
     timer: document.getElementById('timer'),
     timeOf: document.getElementById('time__off'),
     audio: document.querySelector("#music-fon"),
+    nota: document.querySelector("#melodia"),
     dogFirst: document.querySelector('.dog'),
     dogSecond: document.querySelector('.dog-close')
+
 
 }
 
@@ -57,7 +59,7 @@ dom.next.onclick = () => {
 }
 
 //Клик по музыкальной фоновой-кнопке.
-function togglePlay() {
+dom.nota.onclick = () => {
     const audio = dom.audio;
     const audioChange = document.querySelector('.on-pica');
     audioChange.className === 'on-pica' ? audioChange.classList.add('off-pica') && audioChange.classList.remove('on-pica') :
