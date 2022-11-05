@@ -243,7 +243,7 @@ const intervalId = setInterval(() => {
 
     if (counter === 29) {
         dom.audio.pause();
-        const audio = new Audio('./music/2-running-about-hurry..mp3');
+        const audio = new Audio('./music/2-running-about-hurry.mp3');
         audio.play();
     }
     if (counter === 1) {
