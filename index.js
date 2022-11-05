@@ -23,6 +23,7 @@ const dom = {
     timer: document.getElementById('timer'),
     timeOf: document.getElementById('time__off'),
     audio: document.querySelector("#music-fon"),
+    finishAudio: document.getElementById('finishAudio'),
     nota: document.querySelector("#melodia"),
     dogFirst: document.querySelector('.dog'),
     dogSecond: document.querySelector('.dog-close')
@@ -210,7 +211,7 @@ function renderResults() {
     dom.result.questionsCount.innerHTML = totalSteps;
     const validAnswersCountPercent = (validAnswersCount / totalSteps) * 100;
     dom.audio.pause();
-
+    dom.finishAudio.pause()
     const audio = new Audio('./music/zvuk-saljuta.mp3');
     audio.play();
 
@@ -245,9 +246,7 @@ const intervalId = setInterval(() => {
 
     if (counter === 29) {
         dom.audio.pause();
-
-        const audio = new Audio('./music/2-running-about-hurry.mp3');
-        audio.play();
+        dom.finishAudio.play()
     }
     if (counter === 1) {
         dom.audio.pause();
