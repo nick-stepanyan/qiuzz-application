@@ -52,7 +52,7 @@ dom.next.onclick = () => {
     step = step < totalSteps ? step + 1 : step;
     renderQuiz(totalSteps, step);
     dom.answers.classList.remove('quiz__answers-disable');
-    const audio = new Audio('/music/next.mp3');
+    const audio = new Audio('./music/next.mp3');
     audio.play();
 }
 
@@ -138,7 +138,7 @@ dom.answers.onclick = (event) => {
         isDisableAnswers(true);
         validAnswersCount = isValid ? validAnswersCount + 1 : validAnswersCount;
         if (answerClass === 'quiz__answer-valid') {
-            const audio = new Audio('/music/gun.mp3');
+            const audio = new Audio('./music/gun.mp3');
             audio.play();
         } else if (answerClass === 'quiz__answer-invalid') {
             const audio = new Audio('./music/ricohet.mp3');
