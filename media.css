@@ -1,5 +1,5 @@
 @media screen and (max-width: 600px) {
-      .dog {
+    .dog {
         position: absolute;
         right: calc(100%/6.333);
         top: calc(100%/2);
@@ -128,6 +128,12 @@
     #valid-answers,
     #result__total-questions {
         font-size: 25px;
+    }
+    .music img {
+        right: 5%;
+        bottom: 93%;
+        width: 25px;
+        height: 27px;
     }
 }
 
