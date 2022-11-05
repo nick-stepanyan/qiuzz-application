@@ -25,8 +25,11 @@
             <strong id="question-position">1</strong>
             <span id="question"></span>
         </div>
-        <div id="answers" class="quiz__answers">
+        <div class="quiz__answers-wrap">
+            <div id="answers" class="quiz__answers">
+            </div>
         </div>
+
         <div class="sentense">
             <p id="message"></p>
         </div>
@@ -54,8 +57,14 @@
                 <picture>
                     <img class="on-pica" src="/img/nota.png" alt="melodia">
                 </picture>
-                <audio id="music-fon" src="/music/fon-music.mp3" autoplay></audio>
+                <audio id="music-fon" src="/music/fon-music.mp3" preload autoplay></audio>
             </span>
+        </div>
+        <div class="dog dog-close">
+            <picture>
+                <img src="/img/dog.gif" alt="dog">
+                <audio id="dog-laught" src="/music/smex-dog.mp3"></audio>
+            </picture>
         </div>
     </div>
 

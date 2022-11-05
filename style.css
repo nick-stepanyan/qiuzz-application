@@ -100,8 +100,13 @@
         margin-right: 5px;
     }
     
+    .quiz__answers-wrap {
+        background-color: #53ad96;
+        border-radius: var(--radius);
+        z-index: 5;
+    }
+    
     .quiz__answers {
-        background: var(--glass_bg);
         padding: 12px;
         border-radius: var(--radius);
     }
@@ -143,7 +148,6 @@
     .quiz__answer-valid::after,
     .quiz__answer-invalid::after {
         content: '\2713';
-        display: block;
         position: absolute;
         top: 50%;
         right: 5px;
@@ -241,4 +245,22 @@
     
     .off-pica {
         opacity: 0.5;
+    }
+    
+    .dog {
+        position: absolute;
+        right: calc(100%/3.333);
+        top: calc(100%/2);
+        z-index: 2;
+        transition: 0.35s ease-in-out;
+    }
+    
+    .dog-close {
+        display: none;
+        top: calc(100%/7);
+    }
+    
+    .dog img {
+        width: 250px;
+        height: 150px;
     }

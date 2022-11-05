@@ -22,7 +22,9 @@ const dom = {
     },
     timer: document.getElementById('timer'),
     timeOf: document.getElementById('time__off'),
-    audio: document.querySelector("#music-fon")
+    audio: document.querySelector("#music-fon"),
+    dogFirst: document.querySelector('.dog'),
+    dogSecond: document.querySelector('.dog-close')
 
 }
 
@@ -141,10 +143,28 @@ dom.answers.onclick = (event) => {
         } else if (answerClass === 'quiz__answer-invalid') {
             const audio = new Audio('/music/ricohet.mp3');
             audio.play();
+            dogSmile()
         }
 
     }
 };
+
+// Смех собаки
+function dogSmile() {
+    if (totalSteps - 1 > step) {
+        setTimeout(() => {
+            setTimeout(() => {
+                dom.dogSecond.style.display = 'block';
+                const audio = new Audio('/music/smex-dog.mp3');
+                audio.play();
+            }, 500);
+            setTimeout(() => dom.dogSecond.style.top = 'calc(100%/2)', 2000);
+            setTimeout(() => dom.dogSecond.style.display = 'none', 2200);
+            setTimeout(() => dom.dogSecond.style.top = 'calc(100%/7)', 2200);
+        }, 1000);
+
+    }
+}
 
 // Проверка верности ответа
 
@@ -223,7 +243,7 @@ const intervalId = setInterval(() => {
 
     if (counter === 29) {
         dom.audio.pause();
-        const audio = new Audio('/music/2-running-about-hurry.mp3');
+        const audio = new Audio('/music/2-running-about-hurry..mp3');
         audio.play();
     }
     if (counter === 1) {
