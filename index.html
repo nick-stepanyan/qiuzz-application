@@ -43,7 +43,22 @@
             </div>
             <div class="quiz__result-title"></div>
         </div>
+        <div class="time">
+            <span id="timer"></span>
+        </div>
+        <div class="time__off">
+            <span id="time__off">Время вышло!</span>
+        </div>
+        <div class="music" onClick="togglePlay()">
+            <span id="melodia">
+                <picture>
+                    <img class="on-pica" src="/img/nota.png" alt="melodia">
+                </picture>
+                <audio id="music-fon" src="/music/fon-music.mp3" autoplay></audio>
+            </span>
+        </div>
     </div>
+
     <script src="data.js">
     </script>
     <script src="index.js">

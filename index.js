@@ -19,7 +19,11 @@ const dom = {
         resultBlock: document.getElementById('result'),
         validAnswers: document.getElementById('valid-answers'),
         questionsCount: document.getElementById('result__total-questions'),
-    }
+    },
+    timer: document.getElementById('timer'),
+    timeOf: document.getElementById('time__off'),
+    audio: document.querySelector("#music-fon")
+
 }
 
 let step = 0;
@@ -46,6 +50,18 @@ dom.next.onclick = () => {
     step = step < totalSteps ? step + 1 : step;
     renderQuiz(totalSteps, step);
     dom.answers.classList.remove('quiz__answers-disable');
+    const audio = new Audio('/music/next.mp3');
+    audio.play();
+}
+
+//Клик по музыкальной фоновой-кнопке.
+function togglePlay() {
+    const audio = dom.audio;
+    const audioChange = document.querySelector('.on-pica');
+    audioChange.className === 'on-pica' ? audioChange.classList.add('off-pica') && audioChange.classList.remove('on-pica') :
+        audioChange.classList.remove('off-pica') && audioChange.classList.add('on-pica');
+
+    return audio.paused ? audio.play() : audio.pause();
 }
 
 //Функция отрисовки всего опроса
@@ -62,6 +78,7 @@ function renderQuiz(total, step) {
         isDisableButton(true);
     } else if (step === total) {
         renderResults();
+        clearInterval(intervalId);
     }
 };
 
@@ -109,6 +126,7 @@ function renderAnswers(htmlString) {
 
 dom.answers.onclick = (event) => {
     const target = event.target;
+
     if (target.classList.contains('quiz__answer')) {
         const answerNumber = target.dataset.id;
         const isValid = checkAnswer(step, answerNumber)
@@ -117,6 +135,14 @@ dom.answers.onclick = (event) => {
         isDisableButton(false);
         isDisableAnswers(true);
         validAnswersCount = isValid ? validAnswersCount + 1 : validAnswersCount;
+        if (answerClass === 'quiz__answer-valid') {
+            const audio = new Audio('/music/gun.mp3');
+            audio.play();
+        } else if (answerClass === 'quiz__answer-invalid') {
+            const audio = new Audio('/music/ricohet.mp3');
+            audio.play();
+        }
+
     }
 };
 
@@ -161,6 +187,10 @@ function renderResults() {
     dom.result.validAnswers.innerHTML = validAnswersCount;
     dom.result.questionsCount.innerHTML = totalSteps;
     const validAnswersCountPercent = (validAnswersCount / totalSteps) * 100;
+    dom.audio.pause();
+
+    const audio = new Audio('/music/zvuk-saljuta.mp3');
+    audio.play();
 
     if (validAnswersCountPercent === 0) {
         dom.sentense.textContent = 'Очень плохой результат. Мало того, что ты ничего не смыслишь в этой теме, так ты ещё и неудачник, из вопросов не угадать ни одного это надо быть крупным придурком и неудачником одновременно! Жесть... ну ты тупень, лучше открой окно и сделай шаг на встречу другой жизни! Шучу-шучу, это же юмор, понимать надо. Есть разные профессии в жизни, например, подниматель пингвинов! Подумай об этом))) ';
@@ -173,3 +203,40 @@ function renderResults() {
     } else dom.sentense.textContent = 'Невероятный результат! Даже я, когда писал тест, не всегда мог дать все правильные ответы. Ты просто, сука, читер какой-то, как тебе это удалось? Колись? Колись, мать твою... Иди сюда, ты собака сутулая, где твоя шпаргалка? Покажи мне, пока я тебе не трахнул или я сам её найду и запихаю тебе по самые помидоры, ты тварь, собака, а ну иди сюда гавна кусок я тебя сейчас сам трахну. А если не цитировать друга нашего Тарантино, ты очень хорош, парень, очень хорош.';
 
 }
+
+dom.timer.textContent = '60';
+let counter = 60;
+const intervalId = setInterval(() => {
+    counter -= 1;
+    if (counter < 45) {
+        dom.timer.style.color = 'rgb(251, 255, 0)';
+        dom.timer.style.fontSize = '17px';
+        dom.timer.style.fontWeight = '900'
+    }
+    if (counter < 30) {
+        dom.timer.style.color = 'rgb(255, 1, 1)';
+        dom.timer.style.fontSize = '18px';
+        dom.timer.style.fontWeight = '900'
+
+
+    }
+
+    if (counter === 29) {
+        dom.audio.pause();
+        const audio = new Audio('/music/2-running-about-hurry.mp3');
+        audio.play();
+    }
+    if (counter === 1) {
+        dom.audio.pause();
+        const audio = new Audio('/music/mario-smert.mp3');
+        audio.play();
+    }
+    if (counter === 0) {
+        clearInterval(intervalId);
+        renderResults();
+        dom.timer.style.display = 'none';
+        dom.timeOf.style.display = 'block';
+    }
+    dom.timer.textContent = counter;
+
+}, 1000);

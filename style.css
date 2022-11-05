@@ -23,6 +23,7 @@
     }
     
     .quiz {
+        position: relative;
         width: 600px;
         min-height: 500px;
         background: var(--gradient);
@@ -206,4 +207,38 @@
     
     .quiz__result-num {
         font-weight: 500;
+    }
+    
+    .time {
+        position: absolute;
+        right: 5%;
+        bottom: 5%;
+        color: #fff;
+    }
+    
+    #time__off {
+        display: none;
+        position: absolute;
+        right: 5%;
+        bottom: 5%;
+        color: #fff;
+    }
+    
+    .music img {
+        position: absolute;
+        right: 5%;
+        bottom: 12%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        transition: .5s ease;
+    }
+    
+    .music img:hover {
+        background: rgba(233, 225, 225, 0.5);
+        border-radius: 50%;
+    }
+    
+    .off-pica {
+        opacity: 0.5;
     }
