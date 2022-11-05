@@ -52,7 +52,7 @@ dom.next.onclick = () => {
     step = step < totalSteps ? step + 1 : step;
     renderQuiz(totalSteps, step);
     dom.answers.classList.remove('quiz__answers-disable');
-    const audio = new Audio('/music/next.mp3');
+    const audio = new Audio('./music/next.mp3');
     audio.play();
 }
 
@@ -138,10 +138,10 @@ dom.answers.onclick = (event) => {
         isDisableAnswers(true);
         validAnswersCount = isValid ? validAnswersCount + 1 : validAnswersCount;
         if (answerClass === 'quiz__answer-valid') {
-            const audio = new Audio('/music/gun.mp3');
+            const audio = new Audio('./music/gun.mp3');
             audio.play();
         } else if (answerClass === 'quiz__answer-invalid') {
-            const audio = new Audio('/music/ricohet.mp3');
+            const audio = new Audio('./music/ricohet.mp3');
             audio.play();
             dogSmile()
         }
@@ -155,7 +155,7 @@ function dogSmile() {
         setTimeout(() => {
             setTimeout(() => {
                 dom.dogSecond.style.display = 'block';
-                const audio = new Audio('/music/smex-dog.mp3');
+                const audio = new Audio('./music/smex-dog.mp3');
                 audio.play();
             }, 500);
             setTimeout(() => dom.dogSecond.style.top = 'calc(100%/2)', 2000);
@@ -209,7 +209,7 @@ function renderResults() {
     const validAnswersCountPercent = (validAnswersCount / totalSteps) * 100;
     dom.audio.pause();
 
-    const audio = new Audio('/music/zvuk-saljuta.mp3');
+    const audio = new Audio('./music/zvuk-saljuta.mp3');
     audio.play();
 
     if (validAnswersCountPercent === 0) {
@@ -243,12 +243,12 @@ const intervalId = setInterval(() => {
 
     if (counter === 29) {
         dom.audio.pause();
-        const audio = new Audio('/music/2-running-about-hurry..mp3');
+        const audio = new Audio('./music/2-running-about-hurry.mp3');
         audio.play();
     }
     if (counter === 1) {
         dom.audio.pause();
-        const audio = new Audio('/music/mario-smert.mp3');
+        const audio = new Audio('./music/mario-smert.mp3');
         audio.play();
     }
     if (counter === 0) {
