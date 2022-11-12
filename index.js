@@ -22,16 +22,19 @@ const dom = {
     },
     timer: document.getElementById('timer'),
     timeOf: document.getElementById('time__off'),
+    playAgain: document.querySelector('.again'),
     audio: document.querySelector("#music-fon"),
     finishAudio: document.getElementById('finishAudio'),
     nota: document.querySelector("#melodia"),
     dogFirst: document.querySelector('.dog'),
-    dogSecond: document.querySelector('.dog-close')
+    dogSecond: document.querySelector('.dog-close'),
+    bonusPlus: document.querySelector('.bonus__plus')
 
 
 }
 
 let step = 0;
+let counter = 60;
 
 const firstBlockAnswers = (step) => {
     dom.question.textContent = data.questions[step].question;
@@ -143,10 +146,15 @@ dom.answers.onclick = (event) => {
         if (answerClass === 'quiz__answer-valid') {
             const audio = new Audio('./music/gun.mp3');
             audio.play();
+            counter += 5;
+            // bonusPlus.classList.add = 'bonus__plus-able'
+
         } else if (answerClass === 'quiz__answer-invalid') {
             const audio = new Audio('./music/ricohet.mp3');
             audio.play();
             dogSmile()
+            counter -= 2;
+            // bonusPlus.classList.remove = 'bonus__plus-able'
         }
 
     }
@@ -214,7 +222,8 @@ function renderResults() {
     dom.finishAudio.pause()
     const audio = new Audio('./music/zvuk-saljuta.mp3');
     audio.play();
-
+    setTimeout(() => dom.timer.style.display = 'none', 2000);
+    setTimeout(() => dom.playAgain.style.display = 'block', 2500);
     if (validAnswersCountPercent === 0) {
         dom.sentense.textContent = 'Очень плохой результат. Мало того, что ты ничего не смыслишь в этой теме, так ты ещё и неудачник, из вопросов не угадать ни одного это надо быть крупным придурком и неудачником одновременно! Жесть... ну ты тупень, лучше открой окно и сделай шаг на встречу другой жизни! Шучу-шучу, это же юмор, понимать надо. Есть разные профессии в жизни, например, подниматель пингвинов! Подумай об этом))) ';
     } else if (validAnswersCountPercent < 50) {
@@ -228,9 +237,10 @@ function renderResults() {
 }
 
 dom.timer.textContent = '60';
-let counter = 60;
 const intervalId = setInterval(() => {
+
     counter -= 1;
+
     if (counter < 45) {
         dom.timer.style.color = 'rgb(251, 255, 0)';
         dom.timer.style.fontSize = '17px';
@@ -240,24 +250,29 @@ const intervalId = setInterval(() => {
         dom.timer.style.color = 'rgb(255, 1, 1)';
         dom.timer.style.fontSize = '18px';
         dom.timer.style.fontWeight = '900'
-
-
     }
 
-    if (counter === 29) {
+    if (counter <= 29) {
         dom.audio.pause();
         dom.finishAudio.play()
     }
+
+    if (counter >= 30) {
+        dom.finishAudio.pause()
+    }
     if (counter === 1) {
         dom.audio.pause();
+        dom.finishAudio.pause()
         const audio = new Audio('./music/mario-smert.mp3');
         audio.play();
     }
-    if (counter === 0) {
+    if (counter <= 0) {
         clearInterval(intervalId);
         renderResults();
         dom.timer.style.display = 'none';
-        dom.timeOf.style.display = 'block';
+        dom.timeOf.style.display = 'block'
+        setTimeout(() => dom.timeOf.style.display = 'none', 2000);
+        setTimeout(() => dom.playAgain.style.display = 'block', 2500);
     }
     dom.timer.textContent = counter;
 

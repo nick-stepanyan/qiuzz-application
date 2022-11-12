@@ -139,10 +139,13 @@
     .quiz__answer-invalid {
         --size: 28px;
         position: relative;
+        top: 0;
+        right: 0;
         border: 1px solid rgb(255, 255, 255);
         background: #1f5c4f;
         padding-right: calc(var(--size) + 16px);
         word-wrap: break-word;
+        transition: all 1s;
     }
     
     .quiz__answer-valid::after,
@@ -263,4 +266,70 @@
     .dog img {
         width: 250px;
         height: 150px;
+    }
+    
+    .again {
+        position: absolute;
+        background: var(--gradient__progress-line);
+        border: 1px solid rgb(0 0 0 / 21%);
+        padding: 6px 12px;
+        font-weight: 700;
+        border-radius: 50px;
+        right: 5%;
+        bottom: 3%;
+        display: none;
+        opacity: 1;
+        transition: 0.5s ease-in-out;
+    }
+    
+    .again #again {
+        color: rgb(3 4 4);
+        text-decoration: none;
+    }
+    
+    .quiz__answer-valid::before {
+        content: '+5';
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        margin-top: calc(var(--size) / -1.9);
+        width: var(--size);
+        height: var(--size);
+        background: var(--gradient__progress-line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        background-color: black;
+        border-radius: 50%;
+        opacity: 1;
+        animation: myAnimation 1s linear 1;
+    }
+    
+    .quiz__answer-invalid::before {
+        content: '-2';
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        margin-top: calc(var(--size) / -1.9);
+        width: var(--size);
+        height: var(--size);
+        background: var(--gradient__progress-line-error);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        background-color: black;
+        border-radius: 50%;
+        opacity: 1;
+        animation: myAnimation 1s linear 1;
+    }
+    
+    @keyframes myAnimation {
+        100% {
+            top: 0%;
+            right: 5px;
+            transform: translateX(0) translateY(-170%);
+            opacity: 0.5;
+        }
     }

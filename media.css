@@ -135,6 +135,10 @@
         width: 25px;
         height: 27px;
     }
+    .again {
+        padding: 2px 4px;
+        font-size: 12px;
+    }
 }
 
 

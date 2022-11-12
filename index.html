@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="media.css">
+    <link rel="stylesheet" href="animate.css">
+
     <title>Quiz answers</title>
 </head>
 
 <body>
     <div class="quiz">
-        <div id="title" class="quiz__title">Название опроса</div>
+        <div id="title" class="quiz__title" title="dfssfd">Название опроса</div>
         <div class="quiz__progress-wrap">
             <div class="quiz__progress">
                 <div id="progress-fill" class="quiz__progress-fill"></div>
@@ -26,10 +28,8 @@
             <span id="question"></span>
         </div>
         <div class="quiz__answers-wrap">
-            <div id="answers" class="quiz__answers">
-            </div>
+            <div id="answers" class="quiz__answers"></div>
         </div>
-
         <div class="sentense">
             <p id="message"></p>
         </div>
@@ -58,18 +58,22 @@
                     <img class="on-pica" src="./img/nota.png" alt="melodia">
                 </picture>
 
-                <audio id="music-fon" src="./music/fon-music.mp3" preload autoplay></audio>
+                <audio id="music-fon" src="./music/fon-music.mp3" preload autoplay loop></audio>
             </span>
         </div>
-        <audio id="finishAudio" src="./music/2-running-about-hurry.mp3"></audio>
+        <audio id="finishAudio" src="./music/2-running-about-hurry.mp3" loop></audio>
         <div class="dog dog-close">
             <picture>
                 <img src="./img/dog.gif" alt="dog">
                 <audio id="dog-laught" src="./music/smex-dog.mp3"></audio>
             </picture>
         </div>
+        <div class="again swing">
+            <a href="#" id="again" onclick="location.reload(); return false;">
+                Играть занова
+            </a>
+        </div>
     </div>
-
     <script src="data.js">
     </script>
     <script src="index.js">
