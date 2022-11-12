@@ -116,7 +116,7 @@
     }
     
     .quiz__answer {
-        padding: var(--padding_block);
+        padding: 8px 40px 6px 12px;
         background: var(--gradient_3);
         color: white;
         border-radius: var(--radius);
@@ -143,7 +143,6 @@
         right: 0;
         border: 1px solid rgb(255, 255, 255);
         background: #1f5c4f;
-        padding-right: calc(var(--size) + 16px);
         word-wrap: break-word;
         transition: all 1s;
     }
@@ -168,6 +167,53 @@
     .quiz__answer-invalid:after {
         content: '\2718';
         background: var( --gradient__progress-line-error);
+    }
+    
+    .quiz__answer-valid::before {
+        content: '+5';
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        margin-top: calc(var(--size) / -1.9);
+        width: var(--size);
+        height: var(--size);
+        background: var(--gradient__progress-line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        background-color: black;
+        border-radius: 50%;
+        opacity: 1;
+        animation: myAnimation 1s linear 1;
+    }
+    
+    .quiz__answer-invalid::before {
+        content: '-2';
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        margin-top: calc(var(--size) / -1.9);
+        width: var(--size);
+        height: var(--size);
+        background: var(--gradient__progress-line-error);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        background-color: black;
+        border-radius: 50%;
+        opacity: 1;
+        animation: myAnimation 1s linear 1;
+    }
+    
+    @keyframes myAnimation {
+        100% {
+            top: 0%;
+            right: 5px;
+            transform: translateX(0) translateY(-170%);
+            opacity: 0.5;
+        }
     }
     
     .quiz__btn {
@@ -285,51 +331,4 @@
     .again #again {
         color: rgb(3 4 4);
         text-decoration: none;
-    }
-    
-    .quiz__answer-valid::before {
-        content: '+5';
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        margin-top: calc(var(--size) / -1.9);
-        width: var(--size);
-        height: var(--size);
-        background: var(--gradient__progress-line);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        background-color: black;
-        border-radius: 50%;
-        opacity: 1;
-        animation: myAnimation 1s linear 1;
-    }
-    
-    .quiz__answer-invalid::before {
-        content: '-2';
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        margin-top: calc(var(--size) / -1.9);
-        width: var(--size);
-        height: var(--size);
-        background: var(--gradient__progress-line-error);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-        background-color: black;
-        border-radius: 50%;
-        opacity: 1;
-        animation: myAnimation 1s linear 1;
-    }
-    
-    @keyframes myAnimation {
-        100% {
-            top: 0%;
-            right: 5px;
-            transform: translateX(0) translateY(-170%);
-            opacity: 0.5;
-        }
     }
